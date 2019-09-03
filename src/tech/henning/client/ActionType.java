@@ -1,9 +1,9 @@
 package tech.henning.client;
 
 /**
- * Created by Promises on 16/06/17.
+ * Incoming packet ids.
  */
-public class Actions {
+public class ActionType {
     /**
      * The action type for when the examine menu action has been selected.
      */

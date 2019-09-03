@@ -1,6 +1,4 @@
-package com.jagex.runescape;// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+package com.jagex.runescape;
 
 import com.jagex.runescape.cache.media.ImageRGB;
 import com.jagex.runescape.media.ProducingGraphicsBuffer;
@@ -228,13 +226,11 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
 		eventClickX = mouseX;
 		eventClickY = mouseY;
 		lastClick = System.currentTimeMillis();
-		if (mouseevent.getButton() == 2) {
+		if (mouseevent.getButton() == MouseEvent.BUTTON2) {
 			mouseWheelDown = true;
 			mouseWheelX = mouseX;
 			mouseWheelY = mouseY;
-			return;
-		}
-		if (mouseevent.isMetaDown()) {
+		} else if (mouseevent.getButton() == MouseEvent.BUTTON3) {
 			eventMouseButtonPressed = 2;
 			mouseButtonPressed = 2;
 		} else {

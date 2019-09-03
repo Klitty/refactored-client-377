@@ -22,15 +22,15 @@ public class TypeFace extends Rasterizer {
 	public TypeFace(boolean large, Archive archive, String archiveName) {
 		Buffer dataBuffer = new Buffer(archive.getFile(archiveName + ".dat"));
 		Buffer indexBuffer = new Buffer(archive.getFile("index.dat"));
-		indexBuffer.currentPosition = dataBuffer.getUnsignedLEShort() + 4;
+		indexBuffer.currentPosition = dataBuffer.getUnsignedShort() + 4;
 		int k = indexBuffer.getUnsignedByte();
 		if (k > 0)
 			indexBuffer.currentPosition += 3 * (k - 1);
 		for (int character = 0; character < 256; character++) {
 			characterXOffsets[character] = indexBuffer.getUnsignedByte();
 			characterYOffsets[character] = indexBuffer.getUnsignedByte();
-			int characterWidth = characterWidths[character] = indexBuffer.getUnsignedLEShort();
-			int characterHeight = characterHeights[character] = indexBuffer.getUnsignedLEShort();
+			int characterWidth = characterWidths[character] = indexBuffer.getUnsignedShort();
+			int characterHeight = characterHeights[character] = indexBuffer.getUnsignedShort();
 			int characterType = indexBuffer.getUnsignedByte();
 			int characterSize = characterWidth * characterHeight;
 			characterPixels[character] = new byte[characterSize];
